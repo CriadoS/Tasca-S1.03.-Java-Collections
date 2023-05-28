@@ -1,5 +1,6 @@
 package Tasca1_S3_exercici1_3;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class Main__S3_exercici1_3 {
 
 		Scanner lector = new Scanner(System.in);
 	    HashMap <String, String > dadesMap = new HashMap <String, String>(); 
-		File fitxer = new File("C:\\Users\\formacio\\eclipse-workspace\\Tasca1_S3Collections\\dades\\countries.txt"); // ruta d'on està el fitxer
+		File fitxer = new File("C:\\Users\\Sílvia\\Documents\\Eclipseprojects\\especialitzacio\\Tasca-S1.03.-Java-Collections-main\\src\\Tasca1_S3_exercici1_3\\dades\\countries.txt"); // ruta d'on està el fitxer
 		
 		try {
 					
@@ -38,26 +39,15 @@ public class Main__S3_exercici1_3 {
 		}catch(IOException e) {
 			
 			System.out.println("No s'ha trobat el fitxer");
-			
-			
+				
 		}
 		 
 		// demanar nom a l'usuari: 
 		demanarNom();
 		
 		// mostrar els paisos de forma aleatoria 
-		
-	
-		 Random r = new Random();
-		 
-		System.out.println("Recorrer las claves");
-		
-        for (String clave : dadesMap.keySet()) {
-            valor = (dadesMap.get(clave));
-            System.out.println("Clave: " + clave + " valor:" + valor);
-        }
-        
-     
+		Random r = new Random();
+		        
 		for (int i = 0; i < INTENTS; i++) {
 			
 			 	Object[] crunchifyKeys = dadesMap.keySet().toArray();
@@ -89,22 +79,16 @@ public class Main__S3_exercici1_3 {
 	            		
 			
 		}
-		// Haig de guarda en un hashmap el nom de l'usuari amb la puntuacio i ficar-ho al arxiu  
 		
-		//HashMap <String, Integer> dadesJoc = new HashMap <String, Integer>();
-		
-		//dadesJoc.put(nomUser, suma);
-		
-		// crear arxiu // que no sobreescriba 
-		
-		File file2 = new File("C:\\Users\\formacio\\eclipse-workspace\\Tasca1_S3Collections\\dades\\classificacio.txt");
-		String arxiu= nomUser +" "+ suma;
+		// Crear el arxiu de classificació 
+		File file2 = new File("."+ "classificacio.txt");
+		String arxiu = nomUser +" "+ suma;
 		
 		try {
 			
-			FileWriter fw = new FileWriter(file2);
+			FileWriter fw = new FileWriter(file2, true);
 	        BufferedWriter bw = new BufferedWriter(fw);
-	        bw.write(arxiu);
+	        bw.write(arxiu +"\n");
 	        bw.close();
 				
 			
@@ -112,8 +96,6 @@ public class Main__S3_exercici1_3 {
 			
 			
 		}
-		
-		
 		
 	}
 	public static String demanarNom() {
